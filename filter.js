@@ -30,7 +30,7 @@ function replace() {
     "Fernando Collor",
     "Paulo Rabello de Castro",
     "Levy Fidelix",
-    "ROMERO JUCÁ FILHO, no exercício da presidência",
+    "ROMERO JUCÁ FILHO",
     "ROBERTO JEFFERSON MONTEIRO FRANCISCO",
     "CARLOS LUPI",
     "GLEISI HELENA HOFFMANN",
@@ -47,17 +47,17 @@ function replace() {
     "LUIS HENRIQUE DE OLIVEIRA RESENDE",
     "CIRO NOGUEIRA LIMA FILHO",
     "JOSÉ MARIA DE ALMEIDA",
-    "EDMILSON SILVA COSTA*",
+    "EDMILSON SILVA COSTA",
     "JOSÉ LEVY FIDELIX DA CRUZ",
     "MARCELO GUILHERME DE ARO FERREIRA",
     "JOSÉ MARIA EYMAEL",
     "RUI COSTA PIMENTA",
     "RENATA HELLMEISTER DE ABREU",
-    "GUSTAVO BEBIANNO ROCH, no exercício da presidência",
-    "EDUARDO BENEDITO LOPES, no exercício da presidência",
+    "GUSTAVO BEBIANNO ROCH",
+    "EDUARDO BENEDITO LOPES",
     "JULIANO MEDEIROS",
-    "JOSÉ TADEU CANDELÁRIA, no exercício da presidência",
-    "ALFREDO COTAIT NETO, no exercício da presidência",
+    "JOSÉ TADEU CANDELÁRIA",
+    "ALFREDO COTAIT NETO",
     "SÉRGIO RUBENS DE ARAÚJO TORRES",
     "ADILSON BARROSO OLIVEIRA",
     "EURÍPEDES G.DE MACEDO JÚNIOR",
@@ -65,6 +65,8 @@ function replace() {
     "MOISES DOS SANTOS JARDIM",
     "PEDRO IVO DE SOUZA BATISTA",
     "SUÊD HAIDAR NOGUEIRA",
+    "Alckmin",
+    "Joaquim Barbosa",
   ];
   
   exPresidents = [
@@ -85,12 +87,44 @@ function replace() {
     "presidente Michel Temer",
     "presidente Temer",
     "Temer",
+    "FHC",
+  ];
+  
+  const cargosNames = [
     "ex-vice-presidente",
+    "vice-presidente",
     "ex-presidente",
     "Presidente",
     "Petista",
-    "FHC",
+    "deputado federal",
+    "ex-governador",
+    "governador",
+    "ex-senadora",
+    "ex-ministra",
+    "senadora",
+    "ministra",
+    "ex-senador",
+    "ex-ministro",
+    "senador",
+    "ministro",
+    "tucano",
+    "tucanos",
+    "Presidência",
+    "parlamentar",
   ];
+  
+  const cargosRep = [
+    "Motoristas de ônibus",
+    "Entregador",
+    "Assistente de cozinha",
+    "Jornalista",
+    "Policial",
+    "Vendedor",
+    "Empregada doméstica",
+    "Garçom",
+    "Assistente social",
+    "Segurança",
+  ]
   
   const partidosSiglas = [
     "PCdoB",
@@ -157,7 +191,7 @@ function replace() {
     "PARTIDO HUMANISTA DA SOLIDARIEDADE",
     "PARTIDO DOS TRABALHADORES",
     "PARTIDO DEMOCRÁTICO TRABALHISTA",
-    "PARTIDO DEMOCRATAS",
+    "PARTIDO DEMOCRATAS","DEMOCRATAS",
     "PARTIDO DEMOCRACIA CRISTÃ",
     "PARTIDO DA SOCIAL DEMOCRACIA BRASILEIRA",
     "PARTIDO DA REPÚBLICA",
@@ -167,6 +201,16 @@ function replace() {
     "PARTIDO COMUNISTA DO BRASIL",
     "PARTIDO COMUNISTA BRASILEIRO",
     "PARTIDO AVANTE",
+  ];  
+  
+  const replacements = [
+    "Mickey Mouse",
+    "Minnie Mouse",
+    "Pato Donald",
+    "Margarida",
+    "Pateta",
+    "Pluto",
+    "Professor Ludovico",
   ];
   
   elements.forEach((element) => {
@@ -176,10 +220,12 @@ function replace() {
       const text = node.nodeValue;
       
       const politicsSUX = text
-      .replace(new RegExp(politicsNames.join('|'), 'ig'), 'Politico Qualquer')
-      .replace(new RegExp(exPresidents.join('|'), 'ig'), 'Politico Qualquer')
-      .replace(new RegExp(partidosNames.join('|'), 'ig'), 'Partido Qualquer')
-      .replace(new RegExp(partidosSiglas.join('|'), 'g'), 'PQ');
+      .replace(new RegExp(cargosNames.join('|'), 'ig'), cargosRep[Math.floor(Math.random() * cargosRep.length)])
+      .replace(new RegExp(politicsNames.join('|'), 'ig'), replacements[Math.floor(Math.random() * replacements.length)])
+      .replace(new RegExp(exPresidents.join('|'), 'ig'), replacements[Math.floor(Math.random() * replacements.length)])
+      .replace(new RegExp(partidosNames.join('|'), 'ig'), 'Partido Qualquer ')
+      .replace(new RegExp(partidosSiglas.join('|'), 'g'), 'PQ')
+      .replace(new RegExp('presidencial', 'ig'), 'Maluca');
       
       if (politicsSUX !== text) {
         node.nodeValue = politicsSUX;
