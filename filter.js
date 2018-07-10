@@ -1,4 +1,4 @@
-document.addEventListener('load', replace());
+document.addEventListener('load', replace);
 
 window.addEventListener('scroll', function (e) {
   replace();
